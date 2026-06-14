@@ -69,6 +69,28 @@ def inicio() -> dict[str, str]:
     }
 
 @app.get("/health")
+@app.get("/info")
+def info():
+    return {
+        "proyecto": "API predictiva de churn",
+        "descripcion": "Servicio ML-Ops para estimar riesgo de abandono de clientes",
+        "autor": "Airton Coarita",
+        "version_servicio": "1.1.0",
+        "version_modelo": "modelo_churn_v1",
+        "modelo": "modelo_churn_v1.joblib",
+        "variables_entrada": [
+            "antiguedad",
+            "cargo_mensual",
+            "reclamos"
+        ],
+        "endpoints_disponibles": [
+            "/",
+            "/health",
+            "/info",
+            "/predict",
+            "/docs"
+        ]
+    }
 def health() -> dict[str, str]:
     return {
         "estado": "ok",
